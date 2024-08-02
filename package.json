@@ -17,7 +17,7 @@
   "scripts": {
     "prepare": "husky",
     "build": "zx ./scripts/build.mjs",
-    "publish": "zx ./scripts/publish.mjs"
+    "publish:prod": "zx ./scripts/publish.mjs"
   },
   "repository": {
     "type": "git",
