@@ -3,7 +3,6 @@ import { storeToRefs } from "pinia"
 import { useSettingsStore } from "@/store/modules/settings"
 import logo from "@/assets/layouts/logo.png?url"
 import logoText1 from "@/assets/layouts/logo-text-1.png?url"
-import logoText2 from "@/assets/layouts/logo-text-2.png?url"
 
 interface Props {
   collapse?: boolean
@@ -24,7 +23,7 @@ const { layoutMode } = storeToRefs(settingsStore)
         <img :src="logo" class="layout-logo" />
       </router-link>
       <router-link v-else key="expand" to="/">
-        <img :src="layoutMode !== 'left' ? logoText2 : logoText1" class="layout-logo-text" />
+        <img :src="logoText1" class="layout-logo-text" />
       </router-link>
     </transition>
   </div>
