@@ -10,6 +10,7 @@ import { useUserStore } from "./user"
 import { LoginService } from "@/api/login"
 import { ILoginService, type LoginRequestData } from "@/api/login/types/login"
 import { setToken } from "@/utils/cache/cookies"
+import routeSettings from "@/config/route"
 
 const loginService: ILoginService = new LoginService()
 /**
@@ -26,7 +27,6 @@ export const useAuthStore = defineStore("auth", () => {
     const { data } = await loginService.loginApi(loginData)
     userStore.token = data.token
     setToken(data.token)
-    await getInfo()
   }
 
   /**
@@ -35,7 +35,8 @@ export const useAuthStore = defineStore("auth", () => {
   const getInfo = async () => {
     const { data } = await loginService.getUserInfoApi()
     userStore.username = data.username
-    userStore.roles = data.roles
+    // 验证返回的 roles 是否为一个非空数组，否则塞入一个没有任何作用的默认角色，防止路由守卫逻辑进入无限循环
+    userStore.roles = data.roles?.length > 0 ? data.roles : routeSettings.defaultRoles
   }
 
   return { login, getInfo }

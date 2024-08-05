@@ -7,6 +7,7 @@ import { User, Lock, Key, Picture, Loading } from "@element-plus/icons-vue"
 import { LoginService } from "@/api/login"
 import { type LoginRequestData, ILoginService } from "@/api/login/types/login"
 import ThemeSwitch from "@/components/ThemeSwitch/index.vue"
+import { defaultSettings } from "@/config/layouts"
 
 const router = useRouter()
 
@@ -76,8 +77,9 @@ createCode()
   <div class="login-container">
     <ThemeSwitch class="theme-switch" />
     <div class="login-card">
-      <div class="title">
-        <img src="@/assets/layouts/logo-text-2.png" />
+      <div class="title" text-4xl font-bold>
+        <!-- <img src="@/assets/layouts/logo-text-2.png" /> -->
+        {{ defaultSettings.systemName }}
       </div>
       <div class="content">
         <el-form ref="loginFormRef" :model="loginFormData" :rules="loginFormRules" @keyup.enter="handleLogin">

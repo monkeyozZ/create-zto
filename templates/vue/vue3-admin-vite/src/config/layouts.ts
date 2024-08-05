@@ -2,6 +2,8 @@ import { getConfigLayout } from "@/utils/cache/local-storage"
 
 /** 项目配置类型 */
 export interface LayoutSettings {
+  /** 系统名称 */
+  systemName: string
   /** 是否显示 Settings Panel */
   showSettings: boolean
   /** 布局模式 */
@@ -33,13 +35,14 @@ export interface LayoutSettings {
 }
 
 /** 默认配置 */
-const defaultSettings: LayoutSettings = {
+export const defaultSettings: LayoutSettings = {
+  systemName: "后台管理系统模板",
   layoutMode: "left",
-  showSettings: true,
+  showSettings: false,
   showTagsView: true,
   fixedHeader: true,
   showFooter: true,
-  showLogo: true,
+  showLogo: false,
   showNotify: true,
   showThemeSwitch: true,
   showScreenfull: true,
